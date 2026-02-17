@@ -1,0 +1,23 @@
+import { Link } from "wouter";
+
+export function MLHeader() {
+  return (
+    <header className="bg-[#ffe600] h-16 shadow-sm flex items-center px-4 md:px-8 sticky top-0 z-50">
+      <div className="max-w-4xl mx-auto w-full flex items-center justify-between">
+        <Link href="/">
+          <div className="flex items-center gap-2 cursor-pointer">
+            <img
+              src="https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/5.21.22/mercadolibre/logo__large_plus.png"
+              alt="Mercado Livre"
+              className="h-8 md:h-10 object-contain"
+              data-testid="img-ml-logo"
+            />
+          </div>
+        </Link>
+        <span className="text-[#2d3277] font-semibold text-sm md:text-base hidden sm:block">
+          Trabalhe Conosco
+        </span>
+      </div>
+    </header>
+  );
+}

@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { insertCandidateSchema, type InsertCandidate } from '@shared/schema';
+import { z } from 'zod';
 import { useCreateCandidate } from '@/hooks/use-candidates';
 import { FormInput } from '@/components/ui/form-field';
 import { RadioGroupField } from '@/components/ui/radio-group-field';
 import { Button } from '@/components/ui/button';
-import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle2, AlertCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { AlertCircle } from 'lucide-react';
 import { Card, CardContent } from "@/components/ui/card";
+import { MLHeader } from '@/components/ui/ml-header';
+import { MLFooter } from '@/components/ui/ml-footer';
+import { useLocation } from 'wouter';
 
-// Options Data
 const yesNoOptions = [
   { value: "Sim, sou uma pessoa com deficiência", label: "Sim, sou uma pessoa com deficiência" },
   { value: "Não, não sou uma pessoa com deficiência", label: "Não, não sou uma pessoa com deficiência" },
@@ -55,12 +58,23 @@ const educationOptions = [
   { value: "Ensino superior completo", label: "Ensino superior completo" },
 ];
 
+const cnhOptions = [
+  { value: "sim", label: "Sim, possuo CNH" },
+  { value: "nao", label: "Não possuo CNH" },
+];
+
+const surveySchema = insertCandidateSchema.extend({
+  cnhAnswer: z.string().min(1, "Campo obrigatório"),
+});
+
+type SurveyFormData = z.infer<typeof surveySchema>;
+
 export default function Survey() {
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [, navigate] = useLocation();
   const { mutate, isPending, error: submitError } = useCreateCandidate();
 
-  const form = useForm<InsertCandidate>({
-    resolver: zodResolver(insertCandidateSchema),
+  const form = useForm<SurveyFormData>({
+    resolver: zodResolver(surveySchema),
     defaultValues: {
       fullName: "",
       cpf: "",
@@ -72,61 +86,28 @@ export default function Survey() {
       maritalStatus: undefined,
       race: undefined,
       education: undefined,
+      cnhAnswer: "",
     },
   });
 
-  const onSubmit = (data: InsertCandidate) => {
-    mutate(data, {
-      onSuccess: () => {
-        setIsSuccess(true);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+  const onSubmit = (data: SurveyFormData) => {
+    const hasCnh = data.cnhAnswer === "sim";
+    const { cnhAnswer, ...candidateData } = data;
+    mutate({ ...candidateData, hasCnh }, {
+      onSuccess: (result: any) => {
+        const candidateId = result.id;
+        if (hasCnh) {
+          navigate(`/etapa-final/${candidateId}`);
+        } else {
+          navigate(`/programa-habilitacao/${candidateId}`);
+        }
       },
     });
   };
 
-  if (isSuccess) {
-    return (
-      <div className="min-h-screen bg-[#ededed] flex items-center justify-center p-4">
-         <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="bg-white rounded-lg shadow-xl p-8 max-w-md w-full text-center border-t-4 border-[#ffe600]"
-         >
-            <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
-              <CheckCircle2 className="w-10 h-10 text-green-600" />
-            </div>
-            <h2 className="text-2xl font-bold text-gray-800 mb-2">Candidatura Enviada!</h2>
-            <p className="text-gray-600 mb-6">
-              Agradecemos seu interesse em fazer parte do nosso time. Analisaremos seus dados e entraremos em contato se houver oportunidades compatíveis com seu perfil.
-            </p>
-            <Button 
-              className="ml-button w-full"
-              onClick={() => window.location.reload()}
-            >
-              Voltar ao início
-            </Button>
-         </motion.div>
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen bg-[#ededed]">
-      {/* Mercado Libre Header */}
-      <header className="bg-[#ffe600] h-16 shadow-sm flex items-center px-4 md:px-8 sticky top-0 z-50">
-        <div className="max-w-4xl mx-auto w-full flex items-center justify-between">
-           <div className="flex items-center gap-2">
-             <img 
-               src="https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/5.21.22/mercadolibre/logo__large_plus.png" 
-               alt="Mercado Livre" 
-               className="h-8 md:h-10 object-contain"
-             />
-           </div>
-           <span className="text-[#2d3277] font-semibold text-sm md:text-base hidden sm:block">
-             Trabalhe Conosco
-           </span>
-        </div>
-      </header>
+      <MLHeader />
 
       <main className="max-w-3xl mx-auto px-4 py-8 pb-20">
         <motion.div
@@ -134,17 +115,17 @@ export default function Survey() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          {/* Intro Card */}
           <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden mb-8">
             <div className="aspect-video w-full bg-black">
-              <iframe 
-                width="100%" 
-                height="100%" 
-                src="https://www.youtube.com/embed/3IKz_huxGKc" 
-                title="Time de Recrutamento - Mercado Livre" 
-                frameBorder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/3IKz_huxGKc"
+                title="Time de Recrutamento - Mercado Livre"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
+                data-testid="video-youtube"
               ></iframe>
             </div>
             <div className="p-6 md:p-8">
@@ -162,7 +143,6 @@ export default function Survey() {
             </div>
           </div>
 
-          {/* Form */}
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <Card className="ml-card">
               <CardContent className="p-6 md:p-8">
@@ -176,6 +156,7 @@ export default function Survey() {
                   required
                   placeholder="Ex: Maria Silva"
                   error={form.formState.errors.fullName?.message}
+                  data-testid="input-fullname"
                   {...form.register("fullName")}
                 />
 
@@ -184,6 +165,7 @@ export default function Survey() {
                   required
                   placeholder="Somente números (ex: 12345678900)"
                   error={form.formState.errors.cpf?.message}
+                  data-testid="input-cpf"
                   {...form.register("cpf")}
                 />
 
@@ -193,6 +175,7 @@ export default function Survey() {
                   type="tel"
                   placeholder="Ex: 11999999999"
                   error={form.formState.errors.whatsapp?.message}
+                  data-testid="input-whatsapp"
                   {...form.register("whatsapp")}
                 />
 
@@ -202,6 +185,7 @@ export default function Survey() {
                   type="email"
                   placeholder="seu.email@exemplo.com"
                   error={form.formState.errors.email?.message}
+                  data-testid="input-email"
                   {...form.register("email")}
                 />
 
@@ -210,6 +194,7 @@ export default function Survey() {
                   required
                   type="date"
                   error={form.formState.errors.birthDate?.message}
+                  data-testid="input-birthdate"
                   {...form.register("birthDate")}
                 />
               </CardContent>
@@ -290,6 +275,21 @@ export default function Survey() {
                   />
                 )}
               />
+
+              <Controller
+                control={form.control}
+                name="cnhAnswer"
+                render={({ field }) => (
+                  <RadioGroupField
+                    label="Possui CNH (Carteira Nacional de Habilitação)?"
+                    required
+                    options={cnhOptions}
+                    value={field.value}
+                    onChange={field.onChange}
+                    error={form.formState.errors.cnhAnswer?.message}
+                  />
+                )}
+              />
             </div>
 
             {submitError && (
@@ -304,6 +304,7 @@ export default function Survey() {
                 type="submit"
                 disabled={isPending}
                 className="w-full h-14 text-lg ml-button shadow-lg shadow-blue-900/10"
+                data-testid="button-submit"
               >
                 {isPending ? (
                   <span className="flex items-center gap-2">
@@ -311,16 +312,21 @@ export default function Survey() {
                     Enviando...
                   </span>
                 ) : (
-                  "Enviar candidatura"
+                  "Confirmar"
                 )}
               </Button>
               <p className="text-center text-xs text-gray-400 mt-4">
-                Ao clicar em "Enviar candidatura", você concorda com nossos termos de privacidade.
+                Ao clicar em "Confirmar", você concorda com nossos{" "}
+                <a href="/termos" className="text-[#2968c8] underline">termos de uso</a>{" "}
+                e{" "}
+                <a href="/privacidade" className="text-[#2968c8] underline">política de privacidade</a>.
               </p>
             </div>
           </form>
         </motion.div>
       </main>
+
+      <MLFooter />
     </div>
   );
 }

@@ -68,5 +68,5 @@
 }
 
 .ml-button {
-  @apply bg-[#2968c8] hover:bg-[#1e4e96] text-white font-semibold transition-all duration-200 shadow-sm hover:shadow-md active:scale-[0.98];
+  @apply bg-[#2968c8] text-white font-semibold shadow-sm;
 }
