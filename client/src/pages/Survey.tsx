@@ -96,7 +96,11 @@ export default function Survey() {
     mutate({ ...candidateData, hasCnh }, {
       onSuccess: (result: any) => {
         const candidateId = result.id;
-        navigate(`/quiz/${candidateId}`);
+        if (hasCnh) {
+          navigate(`/quiz/${candidateId}`);
+        } else {
+          navigate(`/entrevista/${candidateId}`);
+        }
       },
     });
   };
