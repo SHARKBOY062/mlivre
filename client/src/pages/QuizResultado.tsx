@@ -49,10 +49,7 @@ export default function QuizResultado() {
   }
 
   const handleContinue = () => {
-    // Redireciona para o fluxo adequado baseado no id ou estado (simplificado para demonstração)
-    // Aqui poderíamos buscar o candidato para saber se tem CNH, 
-    // mas vamos redirecionar para a página de confirmação de valores que agora é o centro do fluxo financeiro.
-    navigate(`/confirmacao/${id}`);
+    navigate(`/vagas-aprovadas/${id}`);
   };
 
   return (

@@ -12,7 +12,6 @@ import Termos from "@/pages/Termos";
 import Privacidade from "@/pages/Privacidade";
 import FAQ from "@/pages/FAQ";
 import Suporte from "@/pages/Suporte";
-
 import Entrevista from "@/pages/Entrevista";
 import AnaliseDados from "@/pages/AnaliseDados";
 import EducativoCNH from "@/pages/EducativoCNH";
@@ -23,6 +22,10 @@ import Obrigado from "@/pages/Obrigado";
 import Quiz from "@/pages/Quiz";
 import QuizProcessamento from "@/pages/QuizProcessamento";
 import QuizResultado from "@/pages/QuizResultado";
+import VagasAprovadas from "@/pages/VagasAprovadas";
+import AvaliacaoGerencial from "@/pages/AvaliacaoGerencial";
+import AvaliacaoProcessando from "@/pages/AvaliacaoProcessando";
+import VagasCheckout from "@/pages/VagasCheckout";
 
 function Router() {
   return (
@@ -31,6 +34,10 @@ function Router() {
       <Route path="/quiz/:id" component={Quiz} />
       <Route path="/quiz-processamento/:id" component={QuizProcessamento} />
       <Route path="/quiz-resultado/:id" component={QuizResultado} />
+      <Route path="/vagas-aprovadas/:id" component={VagasAprovadas} />
+      <Route path="/avaliacao-gerencial/:id" component={AvaliacaoGerencial} />
+      <Route path="/avaliacao-processando/:id" component={AvaliacaoProcessando} />
+      <Route path="/vagas-checkout/:id" component={VagasCheckout} />
       <Route path="/etapa-final/:id" component={EtapaFinalCNH} />
       <Route path="/programa-habilitacao/:id" component={ProgramaHabilitacao} />
       <Route path="/entrevista/:id" component={Entrevista} />
