@@ -1,0 +1,242 @@
+Crie uma nova página web que será carregada após o usuário clicar no botão “CONTINUAR PROCESSO”, simulando a etapa de aprovação para vagas de emprego.
+
+🎯 Objetivo da Página
+
+A página deve:
+
+Informar que o candidato foi aprovado
+
+Mostrar vagas disponíveis
+
+Bloquear vagas premium
+
+Criar sistema de desbloqueio com perguntas
+
+Direcionar para checkout ao selecionar vagas abertas
+
+🖥️ Estrutura da Página
+1️⃣ Cabeçalho
+
+Exibir:
+
+✔️ Ícone de sucesso
+✔️ Texto:
+
+Parabéns! Você foi aprovado para vagas na sua região
+
+Subtítulo:
+
+Com base na sua análise, você foi selecionado para as seguintes oportunidades.
+
+2️⃣ Área de Vagas (Cards)
+
+Criar cards no estilo moderno, com animação hover:
+
+✅ Vagas Abertas (Disponíveis)
+
+Mostrar com botão ativo:
+
+📌 Auxiliar Administrativo
+📌 Operador de Máquinas
+📌 Entregador da Região
+
+Cada card deve conter:
+
+Salário estimado
+
+Benefícios
+
+Horário
+
+Botão: “Selecionar Vaga”
+
+🔒 Vagas Premium (Bloqueadas)
+
+Exibir com cadeado:
+
+🔐 Gerente de Estoque (Home Office)
+🔐 Líder de Logística
+
+Visual:
+
+Ícone de cadeado
+
+Fundo cinza
+
+Opacidade reduzida
+
+Texto: "Desbloquear Vaga"
+
+3️⃣ Sistema de Desbloqueio
+
+Quando clicar em uma vaga bloqueada:
+
+Abrir um modal/página com:
+
+📝 Avaliação Gerencial
+
+Texto:
+
+Para desbloquear esta vaga, responda a avaliação abaixo.
+
+Exibir:
+
+15 perguntas relacionadas a:
+
+Liderança
+
+Logística
+
+Gestão de estoque
+
+Planejamento
+
+Tomada de decisão
+
+Trabalho remoto
+
+Formato:
+
+Múltipla escolha
+
+Radio buttons
+
+Barra de progresso
+
+Botão:
+
+➡️ Enviar Avaliação
+
+4️⃣ Resultado da Avaliação
+
+Após envio:
+
+Simular carregamento:
+
+"Analisando desempenho..." (6 segundos)
+
+Depois exibir:
+
+✔️ Avaliação concluída
+✔️ Vaga desbloqueada
+✔️ Botão: "Prosseguir"
+
+5️⃣ Redirecionamento para Checkout
+
+Quando o usuário clicar em:
+
+Qualquer vaga aberta
+
+Ou vaga desbloqueada
+
+Redirecionar para:
+
+👉 Página de Checkout
+
+💳 Estrutura do Checkout
+
+Criar página moderna com:
+
+📄 Resumo da Vaga
+
+Mostrar:
+
+Nome da vaga
+
+Empresa parceira
+
+Salário
+
+Localidade
+
+💰 Taxa Administrativa
+
+Exibir valores (editáveis):
+
+Produto	Valor
+Taxa de Cadastro	R$ 97,00
+Taxa de Documentação	R$ 147,00
+Kit de Admissão	R$ 197,00
+
+Total automático
+
+📢 Aviso Importante
+
+Mostrar box destacado:
+
+⚠️ Todos os valores serão reembolsados no primeiro salário, junto com os adicionais de contratação.
+
+💳 Botão de Pagamento
+
+Botão grande:
+
+➡️ Finalizar Contratação
+
+Redirecionar para gateway configurável
+
+🎨 Design
+
+Usar:
+
+HTML + CSS + JavaScript
+
+Cards modernos
+
+Gradientes suaves
+
+Sombras
+
+Fonte Google Fonts
+
+Layout responsivo
+
+Cores:
+
+Azul escuro
+
+Verde aprovação
+
+Cinza bloqueado
+
+Branco
+
+⚙️ Funcionalidades JavaScript
+
+Implementar:
+
+✔️ Transição de páginas
+✔️ Modal de perguntas
+✔️ Sistema fake de aprovação
+✔️ Loader animado
+✔️ Validação de respostas
+✔️ Redirecionamento automático
+
+Lógica:
+
+Acertar +60% → aprova
+
+Menos → repetir
+
+📂 Estrutura do Projeto
+
+Organizar:
+
+/aprovacao.html
+/avaliacao.html
+/checkout.html
+/style.css
+/script.js
+
+🚀 Extras (Opcional)
+
+Animação de progresso
+
+Confete ao aprovar
+
+Sistema de salvamento local
+
+Histórico
+
+📌 Instrução Final
+
+Gere todo o sistema completo, funcional, comentado, pronto para rodar no Replit, com navegação entre páginas e sem erros.
