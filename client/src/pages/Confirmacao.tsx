@@ -5,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { MLHeader } from '@/components/ui/ml-header';
 import { MLFooter } from '@/components/ui/ml-footer';
 import { FormInput } from '@/components/ui/form-field';
+import { RadioGroupField } from '@/components/ui/radio-group-field';
 import { useLocation, useParams } from 'wouter';
 import { CheckCircle2, Lock } from 'lucide-react';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -14,6 +15,7 @@ export default function Confirmacao() {
   const [, navigate] = useLocation();
   const params = useParams<{ id: string }>();
   const candidateId = params.id;
+  const [loadingText, setLoadingText] = useState("Processando informações no sistema interno...");
   const [accepted, setAccepted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
