@@ -13,13 +13,13 @@ import Privacidade from "@/pages/Privacidade";
 import FAQ from "@/pages/FAQ";
 import Suporte from "@/pages/Suporte";
 
-import Entrevista from "./pages/Entrevista";
-import AnaliseDados from "./pages/AnaliseDados";
-import EducativoCNH from "./pages/EducativoCNH";
-import SeguroPedagogico from "./pages/SeguroPedagogico";
-import Checkout from "./pages/Checkout";
-import ResultadoAvaliacao from "./pages/ResultadoAvaliacao";
-import Obrigado from "./pages/Obrigado";
+import Entrevista from "@/pages/Entrevista";
+import AnaliseDados from "@/pages/AnaliseDados";
+import EducativoCNH from "@/pages/EducativoCNH";
+import SeguroPedagogico from "@/pages/SeguroPedagogico";
+import Checkout from "@/pages/Checkout";
+import ResultadoAvaliacao from "@/pages/ResultadoAvaliacao";
+import Obrigado from "@/pages/Obrigado";
 
 function Router() {
   return (

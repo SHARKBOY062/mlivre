@@ -36,42 +36,8 @@ export default function Confirmacao() {
     setTimeout(() => setLoadingText("Atualizando status da candidatura..."), 3000);
     
     await new Promise(resolve => setTimeout(resolve, 4500));
-    navigate(`/checkout/${candidateId}?total=${total.toFixed(2)}&insurance=${formData.insurance}`);
+    navigate(`/resultado-avaliacao/${candidateId}`);
   };
-
-  if (isComplete) {
-    return (
-      <div className="min-h-screen bg-[#f5f5f5]">
-        <MLHeader />
-        <main className="max-w-3xl mx-auto px-4 py-12">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-12 text-center">
-              <span className="institutional-label mb-8">Processo Administrativo Finalizado</span>
-              <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-6" data-testid="text-success">
-                Ciência Registrada com Sucesso
-              </h1>
-              <div className="section-divider" />
-              <p className="normative-text mb-10 mx-auto max-w-lg">
-                Sua formalização foi processada nos sistemas internos. O candidato deverá aguardar o contato via canal oficial para os próximos procedimentos operacionais.
-              </p>
-              <Button
-                onClick={() => navigate("/")}
-                className="ml-button"
-                data-testid="button-voltar-inicio"
-              >
-                Retornar ao Portal
-              </Button>
-            </div>
-          </motion.div>
-        </main>
-        <MLFooter />
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-[#f5f5f5]">
@@ -85,7 +51,7 @@ export default function Confirmacao() {
         >
           <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden mb-8">
             <div className="p-8 md:p-12">
-              <span className="institutional-label">Finalização do Processo Administrativo</span>
+              <span className="institutional-label">Conclusão da Avaliação</span>
               <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-6" data-testid="text-title-confirmacao">
                 Resumo de Valores e Opção de Seguro
               </h1>

@@ -52,7 +52,7 @@ export default function EtapaFinalCNH() {
               </div>
 
               <Button
-                onClick={() => navigate(`/confirmacao/${candidateId}`)}
+                onClick={() => navigate(`/resultado-avaliacao/${candidateId}`)}
                 className="w-full h-14 ml-button"
                 data-testid="button-garantir-vaga"
               >

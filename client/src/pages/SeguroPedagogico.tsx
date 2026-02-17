@@ -56,7 +56,7 @@ export default function SeguroPedagogico() {
               </div>
 
               <Button
-                onClick={() => navigate(`/confirmacao/${id}`)}
+                onClick={() => navigate(`/resultado-avaliacao/${id}`)}
                 disabled={!choice}
                 className="w-full h-16 ml-button"
               >

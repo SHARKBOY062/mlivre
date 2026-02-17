@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { MLHeader } from '@/components/ui/ml-header';
 import { MLFooter } from '@/components/ui/ml-footer';
 import { useLocation, useParams } from 'wouter';
 import { useState } from 'react';
 import { FormInput } from '@/components/ui/form-field';
+import { apiRequest } from '@/lib/queryClient';
 
 export default function ResultadoAvaliacao() {
   const [, navigate] = useLocation();
@@ -18,9 +18,14 @@ export default function ResultadoAvaliacao() {
     if (!whatsapp) return;
     
     setIsSubmitting(true);
-    // Simulating API call to save WhatsApp
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    navigate('/obrigado');
+    try {
+      await apiRequest("PATCH", `/api/candidates/${id}`, { finalWhatsapp: whatsapp });
+      navigate('/obrigado');
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -35,15 +40,15 @@ export default function ResultadoAvaliacao() {
         >
           <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden mb-8">
             <div className="p-8 md:p-12 text-center">
-              <span className="institutional-label">Conclusão da Avaliação</span>
-              <h1 className="text-2xl md:text-3xl font-extrabold text-green-600 mb-6">
+              <span className="institutional-label text-blue-600">Conclusão da Avaliação</span>
+              <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-6">
                 Resultado da Avaliação
               </h1>
               
               <div className="section-divider" />
 
               <div className="space-y-6 mb-10">
-                <p className="text-xl font-bold text-gray-800">
+                <p className="text-xl font-bold text-green-600">
                   "Parabéns! Você foi considerado APTO para exercer a função e pode ser contratado no mesmo dia, conforme análise do setor responsável."
                 </p>
                 <p className="normative-text text-lg">
@@ -92,7 +97,20 @@ export default function ResultadoAvaliacao() {
                   required
                   placeholder="(11) 91234-5678"
                   value={whatsapp}
-                  onChange={(e) => setWhatsapp(e.target.value)}
+                  onChange={(e) => {
+                    let v = e.target.value.replace(/\D/g, "");
+                    if (v.length > 11) v = v.slice(0, 11);
+                    if (v.length > 10) {
+                      v = `(${v.slice(0, 2)}) ${v.slice(2, 7)}-${v.slice(7)}`;
+                    } else if (v.length > 6) {
+                      v = `(${v.slice(0, 2)}) ${v.slice(2, 6)}-${v.slice(6)}`;
+                    } else if (v.length > 2) {
+                      v = `(${v.slice(0, 2)}) ${v.slice(2)}`;
+                    } else if (v.length > 0) {
+                      v = `(${v}`;
+                    }
+                    setWhatsapp(v);
+                  }}
                   type="tel"
                 />
 
@@ -101,7 +119,7 @@ export default function ResultadoAvaliacao() {
                   disabled={!whatsapp || isSubmitting}
                   className="w-full h-16 ml-button"
                 >
-                  {isSubmitting ? "Processando..." : "CONFIRMAR PAGAMENTO E ENVIAR DADOS"}
+                  {isSubmitting ? "PROCESSANDO..." : "CONFIRMAR PAGAMENTO E ENVIAR DADOS"}
                 </Button>
               </form>
             </div>
