@@ -20,11 +20,17 @@ import SeguroPedagogico from "@/pages/SeguroPedagogico";
 import Checkout from "@/pages/Checkout";
 import ResultadoAvaliacao from "@/pages/ResultadoAvaliacao";
 import Obrigado from "@/pages/Obrigado";
+import Quiz from "@/pages/Quiz";
+import QuizProcessamento from "@/pages/QuizProcessamento";
+import QuizResultado from "@/pages/QuizResultado";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Survey} />
+      <Route path="/quiz/:id" component={Quiz} />
+      <Route path="/quiz-processamento/:id" component={QuizProcessamento} />
+      <Route path="/quiz-resultado/:id" component={QuizResultado} />
       <Route path="/etapa-final/:id" component={EtapaFinalCNH} />
       <Route path="/programa-habilitacao/:id" component={ProgramaHabilitacao} />
       <Route path="/entrevista/:id" component={Entrevista} />

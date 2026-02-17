@@ -96,11 +96,7 @@ export default function Survey() {
     mutate({ ...candidateData, hasCnh }, {
       onSuccess: (result: any) => {
         const candidateId = result.id;
-        if (hasCnh) {
-          navigate(`/etapa-final/${candidateId}`);
-        } else {
-          navigate(`/entrevista/${candidateId}`);
-        }
+        navigate(`/quiz/${candidateId}`);
       },
     });
   };
