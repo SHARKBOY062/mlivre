@@ -1,0 +1,144 @@
+⚠️ INSTRUÇÃO PRIORITÁRIA:
+
+Não alterar nenhuma estrutura já existente.
+Não modificar cores institucionais.
+Não remover o logotipo Mercado Livre.
+Não alterar vídeo ou layout principal.
+
+Apenas elevar o padrão visual e textual para aparência institucional oficial corporativa.
+
+O logotipo Mercado Livre deve permanecer visível no topo de TODAS as páginas.
+
+1️⃣ PADRÃO VISUAL MAIS OFICIAL
+
+Utilizar tipografia mais sóbria (sem exageros modernos)
+
+Espaçamento institucional
+
+Blocos com bordas discretas
+
+Ícones minimalistas
+
+Remover qualquer elemento visual que pareça promocional ou apelativo
+
+Manter fundo claro e blocos bem organizados
+
+Inserir linha divisória fina entre seções
+
+Inserir rodapé institucional com:
+
+Razão social fictícia operacional
+
+Termos
+
+Política de Privacidade
+
+Canal oficial de atendimento
+
+2️⃣ REESTRUTURAR TEXTO PARA PADRÃO NORMATIVO
+
+Substituir textos promocionais por linguagem normativa e corporativa.
+
+Título:
+
+“Formalização da Etapa de Contratação”
+
+Subtítulo:
+
+“Procedimento Administrativo Vinculado ao Processo Seletivo”
+
+Texto modelo:
+
+“O presente ambiente destina-se à formalização das etapas administrativas vinculadas ao processo seletivo da operação logística. O candidato declara estar ciente de que as informações fornecidas serão analisadas conforme critérios internos de conformidade e elegibilidade.”
+
+3️⃣ TEXTO FORMAL SOBRE A TAXA (VERSÃO MAIS INSTITUCIONAL)
+
+Criar seção:
+
+“Disposições Administrativas”
+
+Redação estruturada:
+
+Art. 1º – A taxa administrativa possui natureza operacional e destina-se ao custeio de procedimentos internos necessários à validação documental, integração sistêmica e emissão de registro preliminar.
+
+Art. 2º – O recolhimento da taxa constitui requisito para continuidade da análise final da candidatura.
+
+Art. 3º – Para candidatos participantes do Programa de Regularização de Habilitação, poderão incidir custos adicionais referentes à operacionalização do exame prático junto à instituição credenciada.
+
+Art. 4º – A confirmação desta etapa implica ciência integral das disposições aqui descritas.
+
+Parágrafos organizados, linguagem técnica, sem termos promocionais.
+
+4️⃣ ENVIO DE CURRÍCULO (PADRÃO OFICIAL)
+
+Seção:
+
+“Documentação Complementar”
+
+Texto:
+
+“Para fins de auditoria interna e validação curricular, o candidato deverá anexar currículo atualizado em formato PDF ou DOC.”
+
+Campo obrigatório de upload.
+
+Mensagem institucional discreta após upload:
+
+“Documento anexado com sucesso.”
+
+5️⃣ ANIMAÇÃO DE CARREGAMENTO MAIS OFICIAL
+
+Implementar animação minimalista, discreta e corporativa.
+
+Texto durante carregamento:
+
+“Processando informações no sistema interno…”
+“Validando elegibilidade…”
+“Atualizando status da candidatura…”
+
+Evitar qualquer linguagem promocional.
+
+6️⃣ TERMO DE ACEITE MAIS FORMAL
+
+Checkbox obrigatório com texto:
+
+“Declaro, sob as penas da lei, que li, compreendi e concordo integralmente com as disposições administrativas acima descritas.”
+
+Botão final:
+
+“Confirmar Ciência e Prosseguir”
+
+Estilo do botão: azul institucional escuro, sólido, sem efeito chamativo.
+
+7️⃣ RODAPÉ INSTITUCIONAL
+
+Inserir rodapé fixo contendo:
+
+© Mercado Livre – Processo Seletivo Operacional
+
+Política de Privacidade
+
+Termos de Uso
+
+Canal Oficial de Atendimento
+
+Aviso de confidencialidade
+
+Texto pequeno, formal e discreto.
+
+8️⃣ SENSAÇÃO FINAL
+
+O site deve transmitir:
+
+Autoridade
+
+Formalidade
+
+Estrutura corporativa
+
+Ambiente oficial
+
+Processo administrativo real
+
+Segurança jurídica
+
+Não utilizar linguagem comercial ou promocional.

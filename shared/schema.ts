@@ -18,6 +18,7 @@ export const candidates = pgTable("candidates", {
   hasCnh: boolean("has_cnh"),
   licenseType: text("license_type"), // 'completo' | 'apenas_exame'
   hasInsurance: boolean("has_insurance"),
+  curriculumUrl: text("curriculum_url"),
   status: text("status").default("pending"), // 'pending' | 'approved' | 'rejected'
   createdAt: timestamp("created_at").defaultNow(),
 });

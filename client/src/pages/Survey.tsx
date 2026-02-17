@@ -128,16 +128,18 @@ export default function Survey() {
                 data-testid="video-youtube"
               ></iframe>
             </div>
-            <div className="p-6 md:p-8">
-              <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4 leading-tight">
-                Olá! Temos orgulho em saber que você quer trabalhar na nossa operação logística.
+            <div className="p-6 md:p-10">
+              <span className="institutional-label">Procedimento Administrativo Vinculado ao Processo Seletivo</span>
+              <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-6 leading-tight">
+                Formalização da Etapa de Contratação
               </h1>
-              <p className="text-gray-600 text-lg leading-relaxed">
-                Este é um <strong className="text-gray-800">formulário oficial do Mercado Livre</strong> para participação do nosso processo seletivo. Para seguir adiante com sua candidatura é obrigatório o preenchimento dos dados solicitados a seguir.
+              <div className="section-divider" />
+              <p className="normative-text mb-6">
+                O presente ambiente destina-se à formalização das etapas administrativas vinculadas ao processo seletivo da operação logística. O candidato declara estar ciente de que as informações fornecidas serão analisadas conforme critérios internos de conformidade e elegibilidade.
               </p>
-              <div className="mt-4 p-4 bg-blue-50 border-l-4 border-[#2d3277] rounded-r-md">
-                <p className="text-sm text-[#2d3277]">
-                  Todas as informações fornecidas serão tratadas com <strong>confidencialidade</strong> e utilizadas exclusivamente para fins de recrutamento.
+              <div className="mt-4 p-5 bg-gray-50 border border-gray-200 rounded-md">
+                <p className="text-xs text-gray-500 leading-relaxed italic">
+                  Para fins de auditoria interna e validação sistêmica, todos os dados coletados seguem rigorosos protocolos de proteção de dados e governança corporativa.
                 </p>
               </div>
             </div>

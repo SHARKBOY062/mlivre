@@ -68,5 +68,17 @@
 }
 
 .ml-button {
-  @apply bg-[#2968c8] text-white font-semibold shadow-sm;
+  @apply bg-[#2d3277] text-white font-bold py-4 px-8 rounded-md shadow-sm border-none uppercase tracking-wider text-sm transition-all active:scale-[0.99];
+}
+
+.section-divider {
+  @apply border-t border-gray-100 my-8;
+}
+
+.normative-text {
+  @apply text-gray-600 text-sm leading-relaxed text-justify font-normal;
+}
+
+.institutional-label {
+  @apply text-[#2d3277] font-bold text-xs uppercase tracking-widest mb-2 block;
 }

@@ -12,69 +12,51 @@ export default function EtapaFinalCNH() {
   const candidateId = params.id;
 
   return (
-    <div className="min-h-screen bg-[#ededed]">
+    <div className="min-h-screen bg-[#f5f5f5]">
       <MLHeader />
 
-      <main className="max-w-3xl mx-auto px-4 py-8 pb-20">
+      <main className="max-w-3xl mx-auto px-4 py-12 pb-24">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
         >
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden mb-8">
-            <div className="bg-gradient-to-r from-[#2d3277] to-[#2968c8] p-8 text-white text-center">
-              <div className="mx-auto w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4">
-                <CheckCircle2 className="w-10 h-10 text-white" />
-              </div>
-              <h1 className="text-2xl md:text-3xl font-bold mb-2" data-testid="text-title-cnh">
-                Parabéns! Você Está na Etapa Final de Formalização
+          <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+            <div className="p-8 md:p-12">
+              <span className="institutional-label">Fase Final de Integração Operacional</span>
+              <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-6" data-testid="text-title-cnh">
+                Formalização Administrativa
               </h1>
-              <p className="text-white/90 text-lg">
-                Sua candidatura foi pré-aprovada para a operação logística.
-              </p>
-            </div>
+              
+              <div className="section-divider" />
 
-            <div className="p-6 md:p-8">
-              <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                Informamos que sua candidatura avançou para a fase final do nosso processo seletivo. Para garantir a reserva da sua vaga no lote atual de contratações, é necessária a confirmação da sua participação.
-              </p>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-                <Card className="border-gray-100">
-                  <CardContent className="p-4 text-center">
-                    <Shield className="w-8 h-8 text-[#2968c8] mx-auto mb-2" />
-                    <h3 className="font-semibold text-gray-800 text-sm">Garantia de Reserva</h3>
-                    <p className="text-xs text-gray-500 mt-1">Sua vaga fica reservada no lote atual</p>
-                  </CardContent>
-                </Card>
-                <Card className="border-gray-100">
-                  <CardContent className="p-4 text-center">
-                    <Clock className="w-8 h-8 text-[#2968c8] mx-auto mb-2" />
-                    <h3 className="font-semibold text-gray-800 text-sm">Agendamento Prioritário</h3>
-                    <p className="text-xs text-gray-500 mt-1">Prioridade no agendamento de início</p>
-                  </CardContent>
-                </Card>
-                <Card className="border-gray-100">
-                  <CardContent className="p-4 text-center">
-                    <Users className="w-8 h-8 text-[#2968c8] mx-auto mb-2" />
-                    <h3 className="font-semibold text-gray-800 text-sm">Próximo Ciclo</h3>
-                    <p className="text-xs text-gray-500 mt-1">Inclusão no próximo ciclo operacional</p>
-                  </CardContent>
-                </Card>
-              </div>
-
-              <div className="bg-amber-50 border border-amber-200 rounded-md p-4 mb-8">
-                <p className="text-amber-800 text-sm font-medium">
-                  As vagas desta etapa são limitadas e preenchidas por ordem de confirmação.
+              <div className="space-y-6 mb-10">
+                <p className="normative-text">
+                  Informamos que sua candidatura avançou para a fase final do processo administrativo vinculado à operação logística. Para garantir a reserva da sua vaga no lote vigente de contratações, é necessária a formalização da ciência e conformidade com as normas institucionais.
                 </p>
+
+                <div className="bg-gray-50 p-6 rounded-md border border-gray-100">
+                  <h3 className="institutional-label mb-4">Garantias e Prazos</h3>
+                  <ul className="normative-text list-disc list-inside space-y-2">
+                    <li>Reserva de vaga garantida no lote operacional atual</li>
+                    <li>Prioridade absoluta no agendamento de início</li>
+                    <li>Inclusão imediata no ciclo de treinamento sistêmico</li>
+                  </ul>
+                </div>
+
+                <div className="bg-amber-50/50 border border-amber-100 rounded-md p-5">
+                  <p className="text-[11px] text-amber-900 font-bold uppercase tracking-wider">
+                    Aviso: As vagas são limitadas por ciclo e preenchidas conforme protocolo de confirmação.
+                  </p>
+                </div>
               </div>
 
               <Button
                 onClick={() => navigate(`/confirmacao/${candidateId}`)}
-                className="w-full h-14 text-lg ml-button shadow-lg"
+                className="w-full h-14 ml-button"
                 data-testid="button-garantir-vaga"
               >
-                Garantir Minha Vaga Agora
+                Garantir Reserva e Prosseguir
               </Button>
             </div>
           </div>
