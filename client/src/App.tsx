@@ -13,12 +13,21 @@ import Privacidade from "@/pages/Privacidade";
 import FAQ from "@/pages/FAQ";
 import Suporte from "@/pages/Suporte";
 
+import Entrevista from "./pages/Entrevista";
+import AnaliseDados from "./pages/AnaliseDados";
+import EducativoCNH from "./pages/EducativoCNH";
+import SeguroPedagogico from "./pages/SeguroPedagogico";
+
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Survey} />
       <Route path="/etapa-final/:id" component={EtapaFinalCNH} />
       <Route path="/programa-habilitacao/:id" component={ProgramaHabilitacao} />
+      <Route path="/entrevista/:id" component={Entrevista} />
+      <Route path="/analisando-dados/:id" component={AnaliseDados} />
+      <Route path="/educativo-cnh/:id" component={EducativoCNH} />
+      <Route path="/seguro-pedagogico/:id" component={SeguroPedagogico} />
       <Route path="/confirmacao/:id" component={Confirmacao} />
       <Route path="/termos" component={Termos} />
       <Route path="/privacidade" component={Privacidade} />

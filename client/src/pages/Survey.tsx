@@ -99,7 +99,7 @@ export default function Survey() {
         if (hasCnh) {
           navigate(`/etapa-final/${candidateId}`);
         } else {
-          navigate(`/programa-habilitacao/${candidateId}`);
+          navigate(`/entrevista/${candidateId}`);
         }
       },
     });

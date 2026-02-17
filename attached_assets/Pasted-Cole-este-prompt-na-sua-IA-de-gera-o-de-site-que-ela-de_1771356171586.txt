@@ -1,0 +1,129 @@
+Cole este prompt na sua IA de geração de site, que ela deve:
+
+📌 Após candidato selecionar “Sem CNH”, redirecionar para a etapa de entrevista com analista
+📌 Inserir 18 perguntas de entrevista
+📌 Após respostas, mostrar animação de “Analisando dados” por ~12s
+📌 Depois mostrar uma página de informação educativa sobre o custo dos exames de CNH, com referência à notícia
+📌 Incluir botão de aceite de termos
+📌 Após aceitação, direcionar para opção seguro pedagógico opcional (sem custo obrigatório)
+📌 Especificar que pode ser reembolsado de acordo com política interna de bônus de contratação
+📌 Não condicionar contratação ao pagamento
+
+🔹 PROMPT PARA CRIAÇÃO DO FLUXO
+
+⚠️ Instruções Gerais
+Mantenha identidade visual institucional, cores atuais, logotipo Mercado Livre visível em todas as etapas.
+
+🔹 Entrevista com Analista
+
+Crie uma página de entrevista com analista após o candidato selecionar “Sem CNH”.
+
+Título:
+Entrevista de Avaliação – Candidato Sem CNH
+
+Texto introdutório:
+“Você será conduzido(a) por uma série de perguntas profissionais para que possamos conhecer melhor seu perfil, experiência e motivação. Por favor, responda com clareza e objetividade.”
+
+Insira as seguintes perguntas (campo de texto para resposta em cada uma):
+
+Qual é o seu nome completo?
+
+Qual é sua experiência profissional anterior, especialmente em funções operacionais?
+
+Qual é sua motivação para atuar na área logística?
+
+Você já trabalhou em equipes de operação? Se sim, descreva suas funções.
+
+Como você se organiza para cumprir metas e horários?
+
+Qual é sua maior qualidade que agregaria à equipe?
+
+Cite um desafio profissional que você superou e como fez isso.
+
+Como você lida com situações de pressão?
+
+Você possui disponibilidade para trabalhar em turnos?
+
+Como você garante sua pontualidade no trabalho?
+
+Qual sua experiência com tarefas que exigem responsabilidade?
+
+Você já utilizou sistemas digitais para registro de tarefas ou operações?
+
+Como você se comunica com sua equipe em momentos críticos?
+
+Você possui alguma limitação física relevante?
+
+Qual é seu principal objetivo profissional nos próximos 12 meses?
+
+Como você aprende novas atividades operacionais?
+
+Você possui referências profissionais que podemos consultar?
+
+Você tem alguma observação adicional que gostaria de compartilhar?
+
+Botão ao final:
+Enviar Entrevista
+
+🔹 Tela de Analisando Dados
+
+Após o envio das respostas, redirecionar para página com animação institucional discreta.
+
+Animação:
+Spinner minimalista com textos sequenciais:
+
+“Processando suas respostas…”
+
+“Analisando informações…”
+
+“Verificando compatibilidade de perfil…”
+
+Duração total aproximada: 12 segundos
+
+🔹 Página de Informação Educativa Sobre CNH
+
+Após a animação, redirecione para página institucional com informação educativa e orientações legais.
+
+Título:
+Informação Oficial – Exames de CNH
+
+Texto explicativo (tom institucional, educativo):
+
+“Para sua informação, os exames necessários para obtenção da Carteira Nacional de Habilitação (CNH) possuem valores praticados conforme tabela de custos autorizados pelo órgão regulador de trânsito. De acordo com publicação disponível em fonte jornalística confiável, o valor máximo sugerido para exames de CNH é de até R$ 180,00 por cada etapa, conforme regulamentação de limite de valores para serviços de trânsito. Essa informação é meramente informativa e não constitui qualquer cobrança condicionante para participação no processo de seleção.”
+(Referência: https://www.cnnbrasil.com.br/auto/senatran-limita-em-r-180-valor-maximo-para-todos-exames-da-cnh/#google_vignette
+)
+
+Subtítulo:
+Custos Oficiais de Exames – CNH
+
+Parágrafo informativo:
+Explique que esses valores são praticados pelo DETRAN e que variam conforme unidade estadual, e que o candidato deve buscar valores atualizados diretamente no órgão de trânsito de sua unidade federativa.
+
+🔹 Aceite de Termos e Consentimento
+
+Inserir checkbox obrigatório:
+
+☐ “Declaro que li as informações acima e estou ciente dos procedimentos necessários para obtenção de CNH. Entendo que a empresa não condiciona contratação a qualquer pagamento e que todas as obrigações legais estão descritas aqui.”
+
+Botão:
+Prosseguir
+
+🔹 Página do Seguro Pedagógico – Opcional
+
+Título:
+Seguro Pedagógico Opcional – Apoio à Aprovação
+
+Texto explicativo:
+
+“Você tem a opção de aderir a um seguro pedagógico que amplia seu suporte educacional para até 3 tentativas adicionais de prova prática, com materiais e orientação técnica.
+Essa opção é totalmente facultativa e não é condição para contratação.
+Pode ser incluída ao seu plano de capacitação conforme escolha pessoal.”
+
+Explique de forma clara como o seguro funciona, o que cobre, e que a eventual devolução de valores será tratada conforme política interna de bônus da empresa, não como condição da vaga.
+
+Opções:
+( ) Desejo aderir ao seguro pedagógico
+( ) Não desejo aderir
+
+Botão:
+Confirmar Escolha
