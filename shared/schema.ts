@@ -10,17 +10,26 @@ export const candidates = pgTable("candidates", {
   whatsapp: text("whatsapp").notNull(),
   email: text("email").notNull(),
   birthDate: date("birth_date").notNull(),
-  isPcd: text("is_pcd").notNull(), // Storing the selected option text
+  isPcd: text("is_pcd").notNull(),
   gender: text("gender").notNull(),
   maritalStatus: text("marital_status").notNull(),
   race: text("race").notNull(),
   education: text("education").notNull(),
+  hasCnh: boolean("has_cnh"),
+  licenseType: text("license_type"), // 'completo' | 'apenas_exame'
+  hasInsurance: boolean("has_insurance"),
+  status: text("status").default("pending"), // 'pending' | 'approved' | 'rejected'
   createdAt: timestamp("created_at").defaultNow(),
 });
 
 export const insertCandidateSchema = createInsertSchema(candidates).omit({ 
   id: true, 
   createdAt: true 
+}).extend({
+  hasCnh: z.boolean().optional(),
+  licenseType: z.string().optional(),
+  hasInsurance: z.boolean().optional(),
+  status: z.string().optional(),
 });
 
 export type InsertCandidate = z.infer<typeof insertCandidateSchema>;

@@ -1,0 +1,198 @@
+⚠️ INSTRUÇÃO OBRIGATÓRIA:
+
+Não alterar absolutamente nada do que já foi desenvolvido.
+Não modificar cores, layout, vídeo, estrutura ou identidade visual.
+Manter as cores institucionais amarelo e azul.
+Manter o logotipo Mercado Livre visível em TODAS as páginas existentes e nas novas páginas criadas.
+
+Apenas continuar o fluxo a partir do formulário já existente.
+
+IMPLEMENTAR FLUXO CONDICIONAL COM FOCO EM CONVERSÃO
+
+Após o candidato clicar em “Confirmar”, redirecionar automaticamente conforme resposta da pergunta:
+
+“Possui CNH?”
+
+O texto deve ser institucional, porém persuasivo, com gatilhos de urgência moderada e autoridade corporativa.
+
+FLUXO 1 – CANDIDATO COM CNH
+
+Página título:
+
+“Parabéns! Você Está na Etapa Final de Formalização”
+
+Subtítulo estratégico:
+
+“Sua candidatura foi pré-aprovada para a operação logística.”
+
+Texto:
+
+Informar que o candidato avançou para a fase final.
+
+Explicar que, para garantir a reserva da vaga no lote atual de contratações, é necessária a quitação da Taxa Administrativa de Contratação.
+
+Destacar benefícios:
+
+Garantia de reserva de vaga
+
+Agendamento prioritário
+
+Inclusão no próximo ciclo operacional
+
+Inserir aviso leve de escassez:
+
+“As vagas desta etapa são limitadas e preenchidas por ordem de confirmação.”
+
+Botão forte:
+
+“Garantir Minha Vaga Agora”
+
+FLUXO 2 – CANDIDATO SEM CNH
+
+Título:
+
+“Você Pode Trabalhar Mesmo Sem CNH”
+
+Subtítulo:
+
+“Programa de Habilitação Vinculado à Contratação”
+
+Texto persuasivo e institucional:
+
+Explicar que o candidato poderá ingressar mediante adesão ao Programa de Regularização.
+
+Reforçar benefício emocional:
+
+“Além da oportunidade de renda, você poderá conquistar sua CNH.”
+
+Destacar:
+
+Entrada no mercado de trabalho
+
+Suporte no processo de habilitação
+
+Inclusão em operação ativa
+
+Inserir seção clara:
+
+“Escolha sua modalidade”
+
+( ) Curso completo – aulas práticas
+( ) Apenas exame prático na autoescola designada
+
+Inserir frase estratégica:
+
+“A escolha da modalidade não altera sua elegibilidade, apenas define sua preparação.”
+
+SEÇÃO DE TENTATIVAS (COM REDUÇÃO DE OBJEÇÃO)
+
+Título:
+
+“Política de Tentativas no Exame”
+
+Texto estruturado para gerar segurança:
+
+O candidato terá direito a duas tentativas.
+
+Frase de segurança:
+
+“A maioria dos candidatos é aprovada na primeira tentativa.”
+
+Explicar que tentativa adicional gera custo operacional.
+
+Inserir opção estratégica:
+
+Seguro de Reprovação
+
+Texto persuasivo:
+
+“Para maior tranquilidade, você pode incluir o Seguro de Reprovação e garantir tentativas adicionais sem necessidade de novo processo.”
+
+Opções:
+
+( ) Incluir Seguro de Reprovação
+( ) Prosseguir sem seguro
+
+PÁGINA FINAL – CONFIRMAÇÃO FINANCEIRA (COM FOCO EM DECISÃO)
+
+Título:
+
+“Confirmação da Sua Participação”
+
+Subtítulo:
+
+“Último passo para concluir sua reserva de vaga.”
+
+Texto com progressão psicológica:
+
+“Você já concluiu quase todo o processo. Falta apenas confirmar sua participação.”
+
+Explicar necessidade de pagamento antecipado de forma institucional.
+
+Inserir campos:
+
+Banco
+
+Agência
+
+Conta
+
+Chave Pix
+
+Nome do titular
+
+CPF
+
+Inserir termo de aceite claro e objetivo.
+
+Botão final com alto impacto:
+
+“Confirmar e Finalizar Minha Vaga”
+
+PÁGINAS COMPLEMENTARES OBRIGATÓRIAS
+
+Criar também:
+
+Termos e Condições (clareza + formalidade)
+
+Política de Privacidade (LGPD)
+
+Perguntas Frequentes com objeções estratégicas:
+
+É confiável?
+
+Quando começo?
+
+E se eu desistir?
+
+Posso parcelar?
+
+Página de Suporte
+
+DIRETRIZES DE COPY PARA MÁXIMA CONVERSÃO
+
+Linguagem formal, porém clara
+
+Parágrafos curtos
+
+Destaques estratégicos
+
+Micro gatilhos de urgência
+
+Sensação de avanço no processo
+
+Sempre reforçar “reserva de vaga”
+
+Sempre reforçar “lote atual”
+
+DESIGN (OBRIGATÓRIO)
+
+Não alterar cores já implementadas
+
+Não remover logotipo
+
+Logotipo Mercado Livre visível em todas as páginas
+
+Manter padrão institucional
+
+Botões levemente mais destacados, mas dentro da identidade atual

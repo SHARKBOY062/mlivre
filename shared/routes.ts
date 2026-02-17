@@ -23,5 +23,14 @@ export const api = {
         400: errorSchemas.validation,
       },
     },
+    update: {
+      method: 'PATCH' as const,
+      path: '/api/candidates/:id' as const,
+      input: insertCandidateSchema.partial(),
+      responses: {
+        200: z.custom<typeof candidates.$inferSelect>(),
+        400: errorSchemas.validation,
+      },
+    },
   },
 };
