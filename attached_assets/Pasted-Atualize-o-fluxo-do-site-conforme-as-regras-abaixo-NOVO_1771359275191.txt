@@ -1,0 +1,110 @@
+Atualize o fluxo do site conforme as regras abaixo:
+
+---
+
+📌 NOVO FLUXO PRINCIPAL:
+
+1️⃣ O usuário primeiro deve realizar normalmente o questionário/avaliação.
+
+Nenhuma cobrança deve aparecer antes da conclusão da avaliação.
+
+---
+
+2️⃣ Após finalizar a avaliação, mostrar uma nova página com o resultado:
+
+Título:
+"Resultado da Avaliação"
+
+Mensagem principal:
+
+"Parabéns! Você foi considerado APTO para exercer a função e pode ser contratado no mesmo dia, conforme análise do setor responsável."
+
+Texto complementar:
+
+"Para dar continuidade ao processo e liberar sua contratação imediata, é necessário realizar o pagamento da taxa administrativa."
+
+---
+
+3️⃣ Logo abaixo, exibir a seção:
+
+📊 Taxa para Liberação de Contratação
+
+Dividir o valor total de R$ 49,70 em 5 taxas:
+
+- Taxa de Inscrição Administrativa: R$ 12,90
+- Taxa de Processamento de Dados: R$ 9,80
+- Imposto Operacional de RH: R$ 8,50
+- Taxa de Validação de Cadastro: R$ 7,90
+- Tarifa de Liberação do Sistema: R$ 10,60
+
+Total: R$ 49,70
+
+---
+
+4️⃣ Abaixo das taxas, mostrar a mensagem:
+
+"Após a confirmação do pagamento, sua contratação será encaminhada para a agência responsável."
+
+---
+
+5️⃣ Criar um campo obrigatório para contato:
+
+📌 Campo:
+"Informe seu número de WhatsApp para contato:"
+
+Formato:
+(DDD) + Número
+
+Exemplo: (11) 91234-5678
+
+Esse campo deve ser obrigatório para prosseguir.
+
+---
+
+6️⃣ Criar botão principal:
+
+"CONFIRMAR PAGAMENTO E ENVIAR DADOS"
+
+---
+
+7️⃣ Após confirmação do pagamento:
+
+- Salvar o número de WhatsApp do usuário no sistema
+- Redirecionar automaticamente para a página de agradecimento
+
+---
+
+8️⃣ Criar página final:
+
+📌 Página: "Obrigado"
+
+Título:
+"Cadastro Concluído com Sucesso"
+
+Mensagem:
+
+"Agradecemos sua participação no processo seletivo.
+
+Nossa equipe especializada no ramo entrará em contato com você em breve pelo WhatsApp informado para dar continuidade à sua contratação."
+
+Mensagem complementar:
+
+"Fique atento ao seu telefone."
+
+---
+
+9️⃣ Regras gerais:
+
+- Manter o padrão visual atual do site
+- Layout profissional
+- Responsivo
+- Visual limpo
+- Não remover outras funcionalidades
+- Integrar ao sistema existente
+- Garantir que o fluxo siga exatamente:
+
+Avaliação → Aprovação → Taxa → WhatsApp → Obrigado
+
+---
+
+10️⃣ Entregar o código completo já funcionando.

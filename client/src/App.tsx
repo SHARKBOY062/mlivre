@@ -18,6 +18,8 @@ import AnaliseDados from "./pages/AnaliseDados";
 import EducativoCNH from "./pages/EducativoCNH";
 import SeguroPedagogico from "./pages/SeguroPedagogico";
 import Checkout from "./pages/Checkout";
+import ResultadoAvaliacao from "./pages/ResultadoAvaliacao";
+import Obrigado from "./pages/Obrigado";
 
 function Router() {
   return (
@@ -31,6 +33,8 @@ function Router() {
       <Route path="/seguro-pedagogico/:id" component={SeguroPedagogico} />
       <Route path="/confirmacao/:id" component={Confirmacao} />
       <Route path="/checkout/:id" component={Checkout} />
+      <Route path="/resultado-avaliacao/:id" component={ResultadoAvaliacao} />
+      <Route path="/obrigado" component={Obrigado} />
       <Route path="/termos" component={Termos} />
       <Route path="/privacidade" component={Privacidade} />
       <Route path="/faq" component={FAQ} />

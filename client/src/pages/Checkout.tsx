@@ -13,8 +13,7 @@ export default function Checkout() {
   const insurance = queryParams.get('insurance') === 'sim';
 
   const handleFinish = () => {
-    alert("Pagamento processado com sucesso!");
-    navigate("/");
+    navigate(`/resultado-avaliacao/${params.id}`);
   };
 
   return (
