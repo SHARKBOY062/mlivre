@@ -1,0 +1,113 @@
+Analise a página de pagamento atual do meu sistema.
+
+Objetivo:
+Manter apenas pagamento via PIX e criar um popup/modal para exibir os dados do pagamento ao clicar em "FINALIZAR CONTRATAÇÃO".
+
+---
+
+📌 ALTERAÇÕES PRINCIPAIS:
+
+1️⃣ Remover completamente a opção:
+
+"Cartão de Crédito"
+
+Excluir botões, ícones, validações e qualquer lógica relacionada.
+
+---
+
+2️⃣ Manter apenas:
+
+Forma de pagamento: PIX (Aprovação imediata)
+
+Definir como opção padrão e única.
+
+---
+
+3️⃣ Ao clicar no botão:
+
+"FINALIZAR CONTRATAÇÃO"
+
+Executar as seguintes ações:
+
+- Validar se o usuário marcou o checkbox dos termos
+- Se não estiver marcado, exibir alerta: "Você deve aceitar os termos para continuar."
+
+- Se estiver marcado, abrir um popup/modal centralizado na tela
+
+---
+
+📌 POPUP DE PAGAMENTO PIX:
+
+Criar um modal com:
+
+🔹 Título:
+"Pagamento via PIX"
+
+🔹 Texto:
+"Escaneie o QR Code ou utilize o código abaixo para realizar o pagamento."
+
+🔹 Exibir:
+
+✅ QR Code gerado automaticamente
+✅ Código PIX Copia e Cola
+✅ Valor: R$ 441,00
+✅ Status: Aguardando pagamento...
+
+---
+
+🔹 Botões:
+
+[ COPIAR CÓDIGO PIX ]
+[ FECHAR ]
+
+---
+
+4️⃣ INTEGRAÇÃO:
+
+Preparar estrutura para integração futura com gateway PIX (API).
+
+Criar função mock/simulada inicialmente, caso não exista gateway configurado.
+
+---
+
+5️⃣ ATUALIZAÇÃO DE STATUS:
+
+Após confirmação de pagamento (manual ou automática):
+
+- Atualizar status para: "Pagamento Confirmado"
+- Fechar modal
+- Redirecionar para página de agradecimento
+
+---
+
+6️⃣ DESIGN DO POPUP:
+
+- Fundo escurecido
+- Caixa branca central
+- Cantos arredondados
+- Sombra suave
+- Responsivo
+- Visual profissional
+
+---
+
+7️⃣ SEGURANÇA:
+
+- Bloquear múltiplos cliques
+- Evitar duplicidade de cobrança
+- Validar sessão
+
+---
+
+8️⃣ REGRAS:
+
+- Não remover outras funcionalidades
+- Não quebrar layout
+- Manter padrão visual
+- Código organizado
+
+---
+
+📌 ENTREGA:
+
+Fornecer código HTML + CSS + JavaScript totalmente funcional.
