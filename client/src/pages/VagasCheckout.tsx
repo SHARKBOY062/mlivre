@@ -86,6 +86,8 @@ export default function VagasCheckout() {
   const [qrImage, setQrImage] = useState("");
   const [paymentStatus, setPaymentStatus] = useState<"waiting" | "confirmed">("waiting");
   const [hasClicked, setHasClicked] = useState(false);
+  const [modalPhase, setModalPhase] = useState<"generating" | "ready">("generating");
+  const [genProgress, setGenProgress] = useState(0);
 
   const taxaCadastro = 97.0;
   const taxaDocumentacao = 147.0;
@@ -93,10 +95,33 @@ export default function VagasCheckout() {
   const total = taxaCadastro + taxaDocumentacao + kitAdmissao;
 
   useEffect(() => {
-    if (showPixModal && !qrImage) {
-      setQrImage(generateQRDataUrl(pixCode));
+    if (showPixModal && modalPhase === "generating") {
+      const duration = 8000;
+      const interval = 80;
+      const steps = duration / interval;
+      const increment = 100 / steps;
+
+      const progressInterval = setInterval(() => {
+        setGenProgress((prev) => {
+          if (prev >= 100) {
+            clearInterval(progressInterval);
+            return 100;
+          }
+          return prev + increment;
+        });
+      }, interval);
+
+      const timeout = setTimeout(() => {
+        setQrImage(generateQRDataUrl(pixCode));
+        setModalPhase("ready");
+      }, duration);
+
+      return () => {
+        clearInterval(progressInterval);
+        clearTimeout(timeout);
+      };
     }
-  }, [showPixModal, pixCode, qrImage]);
+  }, [showPixModal, modalPhase, pixCode]);
 
   const handleFinish = useCallback(() => {
     if (hasClicked) return;
@@ -131,10 +156,12 @@ export default function VagasCheckout() {
   }, [id, navigate]);
 
   const handleCloseModal = useCallback(() => {
-    if (paymentStatus === "confirmed") return;
+    if (paymentStatus === "confirmed" || modalPhase === "generating") return;
     setShowPixModal(false);
     setHasClicked(false);
-  }, [paymentStatus]);
+    setModalPhase("generating");
+    setGenProgress(0);
+  }, [paymentStatus, modalPhase]);
 
   return (
     <div className="min-h-screen bg-[#f5f5f5]">
@@ -264,7 +291,7 @@ export default function VagasCheckout() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4"
-            onClick={(e) => { if (e.target === e.currentTarget) handleCloseModal(); }}
+            onClick={(e) => { if (e.target === e.currentTarget && modalPhase !== "generating") handleCloseModal(); }}
             data-testid="modal-pix-overlay"
           >
             <motion.div
@@ -280,7 +307,7 @@ export default function VagasCheckout() {
                   <QrCode className="w-6 h-6 text-white" />
                   <h2 className="text-lg font-extrabold text-white">Pagamento via PIX</h2>
                 </div>
-                {paymentStatus !== "confirmed" && (
+                {paymentStatus !== "confirmed" && modalPhase === "ready" && (
                   <button onClick={handleCloseModal} className="text-white/70 hover:text-white transition-colors" data-testid="button-close-modal">
                     <X className="w-5 h-5" />
                   </button>
@@ -288,7 +315,32 @@ export default function VagasCheckout() {
               </div>
 
               <div className="p-6">
-                {paymentStatus === "confirmed" ? (
+                {modalPhase === "generating" ? (
+                  <div className="text-center py-8">
+                    <div className="mb-6 flex justify-center">
+                      <div className="w-16 h-16 border-4 border-[#2d3277]/10 border-t-[#2d3277] rounded-full animate-spin" />
+                    </div>
+                    <h3 className="text-xl font-extrabold text-gray-900 mb-2" data-testid="text-generating-title">
+                      Gerando cobrança PIX...
+                    </h3>
+                    <p className="text-gray-500 text-sm mb-8">
+                      Aguarde enquanto preparamos seu pagamento.
+                    </p>
+                    <div className="space-y-2 max-w-xs mx-auto">
+                      <div className="w-full bg-gray-100 rounded-full h-2 overflow-hidden">
+                        <motion.div
+                          className="h-full bg-[#2d3277] rounded-full"
+                          initial={{ width: 0 }}
+                          animate={{ width: `${genProgress}%` }}
+                          transition={{ duration: 0.1 }}
+                        />
+                      </div>
+                      <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">
+                        {Math.round(genProgress)}%
+                      </p>
+                    </div>
+                  </div>
+                ) : paymentStatus === "confirmed" ? (
                   <div className="text-center py-4">
                     <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
                       <CheckCircle2 className="w-8 h-8 text-green-600" />
