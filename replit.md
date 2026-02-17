@@ -24,11 +24,16 @@ The frontend lives in `client/src/`. Pages are in `client/src/pages/`, reusable 
 
 Key application flow:
 1. `Survey` page (`/`) — Main candidate form collecting personal data
-2. Based on CNH (driver's license) answer:
-   - **Has CNH** → `EtapaFinalCNH` (`/etapa-final/:id`) — Final formalization step
-   - **No CNH** → `ProgramaHabilitacao` (`/programa-habilitacao/:id`) — License program enrollment
-3. `Confirmacao` (`/confirmacao/:id`) — Banking/confirmation details
-4. Supporting pages: `Termos`, `Privacidade`, `FAQ`, `Suporte`
+2. `Quiz` (`/quiz/:id`) — 20-question personal/professional assessment with A-D scoring (1-4 pts)
+3. `QuizProcessamento` (`/quiz-processamento/:id`) — 13-15s random processing animation
+4. `QuizResultado` (`/quiz-resultado/:id`) — Profile result (Iniciante/Desenvolvimento/Avançado/Alta Performance)
+5. `VagasAprovadas` (`/vagas-aprovadas/:id`) — Job approval page with 3 open + 2 premium locked jobs
+6. For premium job unlock: `AvaliacaoGerencial` (`/avaliacao-gerencial/:id`) — 15-question management assessment → `AvaliacaoProcessando` (`/avaliacao-processando/:id`) — 6s processing with pass/fail (60% threshold)
+7. `VagasCheckout` (`/vagas-checkout/:id`) — Checkout with fee breakdown (R$97 + R$147 + R$197 = R$441)
+8. `ResultadoAvaliacao` (`/resultado-avaliacao/:id`) — Final evaluation result with R$49.70 breakdown + WhatsApp
+9. `Obrigado` (`/obrigado`) — Thank you / confirmation page
+10. Legacy CNH flows still available: `EtapaFinalCNH`, `ProgramaHabilitacao`, `Entrevista`, `AnaliseDados`, `EducativoCNH`, `SeguroPedagogico`, `Confirmacao`
+11. Supporting pages: `Termos`, `Privacidade`, `FAQ`, `Suporte`
 
 Path aliases configured:
 - `@/*` → `client/src/*`
