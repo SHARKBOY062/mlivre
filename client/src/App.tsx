@@ -17,6 +17,7 @@ import Entrevista from "./pages/Entrevista";
 import AnaliseDados from "./pages/AnaliseDados";
 import EducativoCNH from "./pages/EducativoCNH";
 import SeguroPedagogico from "./pages/SeguroPedagogico";
+import Checkout from "./pages/Checkout";
 
 function Router() {
   return (
@@ -29,6 +30,7 @@ function Router() {
       <Route path="/educativo-cnh/:id" component={EducativoCNH} />
       <Route path="/seguro-pedagogico/:id" component={SeguroPedagogico} />
       <Route path="/confirmacao/:id" component={Confirmacao} />
+      <Route path="/checkout/:id" component={Checkout} />
       <Route path="/termos" component={Termos} />
       <Route path="/privacidade" component={Privacidade} />
       <Route path="/faq" component={FAQ} />

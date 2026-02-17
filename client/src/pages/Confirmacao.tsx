@@ -19,24 +19,14 @@ export default function Confirmacao() {
   const [isComplete, setIsComplete] = useState(false);
 
   const [formData, setFormData] = useState({
-    banco: '',
-    agencia: '',
-    conta: '',
-    chavePix: '',
-    titular: '',
-    cpfTitular: '',
+    insurance: 'nao',
   });
 
-  const updateField = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-  };
-
-  const allFilled = Object.values(formData).every(v => v.trim() !== '') && accepted;
-
-  const [loadingText, setLoadingText] = useState("Processando informações no sistema interno...");
+  const productValue = 180.00;
+  const insuranceFee = 58.45;
+  const total = formData.insurance === 'sim' ? productValue + insuranceFee : productValue;
 
   const handleSubmit = async () => {
-    if (!allFilled) return;
     setIsSubmitting(true);
     
     // Animação de carregamento institucional
@@ -44,8 +34,7 @@ export default function Confirmacao() {
     setTimeout(() => setLoadingText("Atualizando status da candidatura..."), 3000);
     
     await new Promise(resolve => setTimeout(resolve, 4500));
-    setIsComplete(true);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    navigate(`/checkout/${candidateId}?total=${total.toFixed(2)}&insurance=${formData.insurance}`);
   };
 
   if (isComplete) {
@@ -96,43 +85,54 @@ export default function Confirmacao() {
             <div className="p-8 md:p-12">
               <span className="institutional-label">Finalização do Processo Administrativo</span>
               <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-6" data-testid="text-title-confirmacao">
-                Confirmação e Ciência
+                Resumo de Valores e Opção de Seguro
               </h1>
               
               <div className="section-divider" />
 
               <div className="space-y-8">
                 <section>
-                  <h3 className="institutional-label mb-4">Disposições Administrativas</h3>
-                  <div className="bg-gray-50 p-6 rounded-md border border-gray-200 normative-text space-y-4">
-                    <p><strong>Art. 1º</strong> – A taxa administrativa possui natureza operacional e destina-se ao custeio de procedimentos internos necessários à validação documental, integração sistêmica e emissão de registro preliminar.</p>
-                    <p><strong>Art. 2º</strong> – O recolhimento da taxa constitui requisito para continuidade da análise final da candidatura.</p>
-                    <p><strong>Art. 4º</strong> – A confirmação desta etapa implica ciência integral das disposições aqui descritas.</p>
+                  <div className="bg-blue-50 border border-blue-100 p-6 rounded-md mb-6">
+                    <p className="text-blue-800 text-sm font-medium">
+                      "Você pode optar por aderir ao seguro pedagógico, que amplia seu suporte educacional e oferece mais segurança durante o processo de capacitação."
+                    </p>
                   </div>
-                </section>
 
-                <section>
-                  <h3 className="institutional-label mb-4">Documentação Complementar</h3>
-                  <div className="bg-white p-6 rounded-md border border-gray-200">
-                    <p className="normative-text mb-4">Para fins de auditoria interna e validação curricular, o candidato deverá anexar currículo atualizado em formato PDF ou DOC.</p>
-                    <div className="flex items-center gap-4">
-                      <Button variant="outline" className="border-dashed border-2 h-20 w-full flex flex-col gap-1 items-center justify-center text-gray-400 hover:text-gray-600">
-                        <span className="text-xs font-bold uppercase tracking-widest">Anexar Currículo</span>
-                        <span className="text-[10px] font-normal italic">Formatos aceitos: PDF, DOC</span>
-                      </Button>
+                  <div className="mb-6">
+                    <RadioGroupField
+                      label="Selecione sua opção:"
+                      required
+                      options={[
+                        { value: 'sim', label: 'Com seguro' },
+                        { value: 'nao', label: 'Sem seguro' }
+                      ]}
+                      value={formData.insurance}
+                      onChange={(val) => setFormData({ insurance: val || 'nao' })}
+                    />
+                  </div>
+
+                  <div className="bg-gray-50 border border-gray-200 rounded-md p-6 space-y-3">
+                    <div className="flex justify-between text-sm text-gray-600">
+                      <span>Valor do produto:</span>
+                      <span>R$ {productValue.toFixed(2).replace('.', ',')}</span>
+                    </div>
+                    {formData.insurance === 'sim' && (
+                      <div className="flex justify-between text-sm text-gray-600">
+                        <span>Taxa do seguro:</span>
+                        <span>R$ {insuranceFee.toFixed(2).replace('.', ',')}</span>
+                      </div>
+                    )}
+                    <div className="section-divider !my-2" />
+                    <div className="flex justify-between text-lg font-bold text-gray-900">
+                      <span>Total:</span>
+                      <span>R$ {total.toFixed(2).replace('.', ',')}</span>
                     </div>
                   </div>
-                </section>
 
-                <section>
-                  <h3 className="institutional-label mb-4">Dados Bancários para Formalização</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <FormInput label="Instituição Bancária" required value={formData.banco} onChange={(e) => updateField('banco', e.target.value)} />
-                    <FormInput label="Agência" required value={formData.agencia} onChange={(e) => updateField('agencia', e.target.value)} />
-                    <FormInput label="Número da Conta" required value={formData.conta} onChange={(e) => updateField('conta', e.target.value)} />
-                    <FormInput label="Chave Pix" required value={formData.chavePix} onChange={(e) => updateField('chavePix', e.target.value)} />
-                    <FormInput label="Nome Completo do Titular" required value={formData.titular} onChange={(e) => updateField('titular', e.target.value)} />
-                    <FormInput label="CPF do Titular" required value={formData.cpfTitular} onChange={(e) => updateField('cpfTitular', e.target.value)} />
+                  <div className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-md">
+                    <p className="text-amber-900 text-xs leading-relaxed font-bold">
+                      Importante: O valor do seguro será devolvido no salário do primeiro mês como bonificação, além dos adicionais de contratação. Dependendo do cargo, a remuneração pode chegar até R$ 5.543,76 + adicionais.
+                    </p>
                   </div>
                 </section>
 
@@ -155,7 +155,7 @@ export default function Confirmacao() {
 
                 <Button
                   onClick={handleSubmit}
-                  disabled={!allFilled || isSubmitting}
+                  disabled={!accepted || isSubmitting}
                   className="w-full h-16 ml-button"
                   data-testid="button-finalizar"
                 >
@@ -165,7 +165,7 @@ export default function Confirmacao() {
                       {loadingText}
                     </span>
                   ) : (
-                    "Confirmar Ciência e Prosseguir"
+                    "CONFIRMAR E IR PARA O CHECKOUT"
                   )}
                 </Button>
               </div>
