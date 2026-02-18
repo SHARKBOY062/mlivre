@@ -17,7 +17,7 @@ export default function ResultadoAvaliacao() {
   const seguro = queryParams.get("seguro") || "nao";
 
   const valorBase = 180.00;
-  const valorSeguro = 43.87;
+  const valorSeguro = 48.45;
   const total = seguro === "sim" ? valorBase + valorSeguro : valorBase;
 
   const handleSubmit = async (e: React.FormEvent) => {

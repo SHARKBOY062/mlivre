@@ -22,7 +22,7 @@ export default function Confirmacao() {
   });
 
   const productValue = 180.00;
-  const insuranceFee = 43.87;
+  const insuranceFee = 48.45;
   const total = formData.insurance === 'sim' ? productValue + insuranceFee : productValue;
 
   const handleSubmit = () => {
