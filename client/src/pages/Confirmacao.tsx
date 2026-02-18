@@ -18,7 +18,7 @@ export default function Confirmacao() {
   const [processingProgress, setProcessingProgress] = useState(0);
 
   const [formData, setFormData] = useState({
-    insurance: 'nao',
+    insurance: 'sim',
   });
 
   const productValue = 180.00;
@@ -125,7 +125,7 @@ export default function Confirmacao() {
                       label="Selecione sua opção:"
                       required
                       options={[
-                        { value: 'sim', label: 'Desejo aderir ao seguro pedagógico' },
+                        { value: 'sim', label: 'Desejo aderir ao seguro pedagógico (+ R$ 48,45)' },
                         { value: 'nao', label: 'Não desejo aderir' }
                       ]}
                       value={formData.insurance}
