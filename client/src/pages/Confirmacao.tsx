@@ -25,7 +25,7 @@ export default function Confirmacao() {
   });
 
   const productValue = 180.00;
-  const insuranceFee = 58.45;
+  const insuranceFee = 43.87;
   const total = formData.insurance === 'sim' ? productValue + insuranceFee : productValue;
 
   const handleSubmit = async () => {
@@ -71,29 +71,29 @@ export default function Confirmacao() {
                       label="Selecione sua opção:"
                       required
                       options={[
-                        { value: 'sim', label: 'Com seguro' },
-                        { value: 'nao', label: 'Sem seguro' }
+                        { value: 'sim', label: 'Desejo aderir ao seguro pedagógico' },
+                        { value: 'nao', label: 'Não desejo aderir' }
                       ]}
                       value={formData.insurance}
                       onChange={(val) => setFormData({ insurance: val || 'nao' })}
                     />
                   </div>
 
-                  <div className="bg-gray-50 border border-gray-200 rounded-md p-6 space-y-3">
+                  <div className="bg-gray-50 border border-gray-200 rounded-md p-6 space-y-3" data-testid="resumo-valores">
                     <div className="flex justify-between text-sm text-gray-600">
                       <span>Valor do produto:</span>
                       <span>R$ {productValue.toFixed(2).replace('.', ',')}</span>
                     </div>
                     {formData.insurance === 'sim' && (
                       <div className="flex justify-between text-sm text-gray-600">
-                        <span>Taxa do seguro:</span>
+                        <span>Seguro pedagógico:</span>
                         <span>R$ {insuranceFee.toFixed(2).replace('.', ',')}</span>
                       </div>
                     )}
                     <div className="section-divider !my-2" />
-                    <div className="flex justify-between text-lg font-bold text-gray-900">
+                    <div className="flex justify-between text-xl font-extrabold text-gray-900">
                       <span>Total:</span>
-                      <span>R$ {total.toFixed(2).replace('.', ',')}</span>
+                      <span data-testid="text-valor-total">R$ {total.toFixed(2).replace('.', ',')}</span>
                     </div>
                   </div>
 
