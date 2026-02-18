@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { MLHeader } from '@/components/ui/ml-header';
 import { MLFooter } from '@/components/ui/ml-footer';
+import { RadioGroupField } from '@/components/ui/radio-group-field';
 import { useLocation, useParams } from 'wouter';
 import { useState } from 'react';
 import { FormInput } from '@/components/ui/form-field';
@@ -14,7 +15,8 @@ export default function ResultadoAvaliacao() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const queryParams = new URLSearchParams(window.location.search);
-  const seguro = queryParams.get("seguro") || "nao";
+  const initialSeguro = queryParams.get("seguro") || "sim";
+  const [seguro, setSeguro] = useState(initialSeguro);
 
   const valorBase = 180.00;
   const valorSeguro = 48.45;
@@ -61,6 +63,19 @@ export default function ResultadoAvaliacao() {
                 <p className="normative-text text-lg">
                   "Para dar continuidade ao processo e liberar sua contratação imediata, é necessário realizar o pagamento da taxa administrativa."
                 </p>
+              </div>
+
+              <div className="text-left mb-6">
+                <RadioGroupField
+                  label="Seguro pedagógico:"
+                  required
+                  options={[
+                    { value: 'sim', label: 'Desejo aderir ao seguro pedagógico (+ R$ 48,45)' },
+                    { value: 'nao', label: 'Não desejo aderir' }
+                  ]}
+                  value={seguro}
+                  onChange={(val) => setSeguro(val || 'nao')}
+                />
               </div>
 
               <div className="bg-gray-50 p-6 rounded-md border border-gray-200 text-left mb-10" data-testid="resumo-resultado">
