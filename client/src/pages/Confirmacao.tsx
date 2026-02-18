@@ -1,13 +1,10 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { MLHeader } from '@/components/ui/ml-header';
 import { MLFooter } from '@/components/ui/ml-footer';
-import { FormInput } from '@/components/ui/form-field';
 import { RadioGroupField } from '@/components/ui/radio-group-field';
 import { useLocation, useParams } from 'wouter';
-import { CheckCircle2, Lock } from 'lucide-react';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 
@@ -15,10 +12,10 @@ export default function Confirmacao() {
   const [, navigate] = useLocation();
   const params = useParams<{ id: string }>();
   const candidateId = params.id;
-  const [loadingText, setLoadingText] = useState("Processando informações no sistema interno...");
   const [accepted, setAccepted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isComplete, setIsComplete] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [processingText, setProcessingText] = useState("Processando seus dados...");
+  const [processingProgress, setProcessingProgress] = useState(0);
 
   const [formData, setFormData] = useState({
     insurance: 'nao',
@@ -28,16 +25,73 @@ export default function Confirmacao() {
   const insuranceFee = 43.87;
   const total = formData.insurance === 'sim' ? productValue + insuranceFee : productValue;
 
-  const handleSubmit = async () => {
-    setIsSubmitting(true);
-    
-    // Animação de carregamento institucional
-    setTimeout(() => setLoadingText("Validando elegibilidade..."), 1500);
-    setTimeout(() => setLoadingText("Atualizando status da candidatura..."), 3000);
-    
-    await new Promise(resolve => setTimeout(resolve, 4500));
-    navigate(`/resultado-avaliacao/${candidateId}`);
+  const handleSubmit = () => {
+    setIsProcessing(true);
+
+    const duration = 12000;
+    const interval = 100;
+    const steps = duration / interval;
+    const increment = 100 / steps;
+
+    const progressInterval = setInterval(() => {
+      setProcessingProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(progressInterval);
+          return 100;
+        }
+        return prev + increment;
+      });
+    }, interval);
+
+    setTimeout(() => setProcessingText("Validando informações no sistema..."), 2000);
+    setTimeout(() => setProcessingText("Verificando elegibilidade do candidato..."), 4500);
+    setTimeout(() => setProcessingText("Consultando base de dados interna..."), 7000);
+    setTimeout(() => setProcessingText("Atualizando status da candidatura..."), 9500);
+
+    setTimeout(() => {
+      clearInterval(progressInterval);
+      navigate(`/resultado-avaliacao/${candidateId}?seguro=${formData.insurance}`);
+    }, duration);
   };
+
+  if (isProcessing) {
+    return (
+      <div className="min-h-screen bg-[#f5f5f5]">
+        <MLHeader />
+        <div className="fixed inset-0 bg-white/95 flex items-center justify-center z-50">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="text-center p-8 max-w-md"
+          >
+            <div className="mb-8 flex justify-center">
+              <div className="w-20 h-20 border-[5px] border-gray-200 border-t-[#2d3277] rounded-full animate-spin" />
+            </div>
+            <h2 className="text-2xl font-extrabold text-gray-900 mb-3" data-testid="text-processing-title">
+              {processingText}
+            </h2>
+            <p className="text-gray-500 text-sm mb-8">
+              Aguarde enquanto analisamos suas informações.
+            </p>
+            <div className="space-y-2 max-w-xs mx-auto">
+              <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
+                <motion.div
+                  className="h-full bg-[#2d3277] rounded-full"
+                  initial={{ width: 0 }}
+                  animate={{ width: `${processingProgress}%` }}
+                  transition={{ duration: 0.1 }}
+                />
+              </div>
+              <p className="text-xs text-gray-400 font-bold uppercase tracking-widest">
+                {Math.round(processingProgress)}%
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#f5f5f5]">
@@ -123,18 +177,11 @@ export default function Confirmacao() {
 
                 <Button
                   onClick={handleSubmit}
-                  disabled={!accepted || isSubmitting}
+                  disabled={!accepted}
                   className="w-full h-16 ml-button"
                   data-testid="button-finalizar"
                 >
-                  {isSubmitting ? (
-                    <span className="flex items-center gap-3">
-                      <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                      {loadingText}
-                    </span>
-                  ) : (
-                    "CONFIRMAR E IR PARA O CHECKOUT"
-                  )}
+                  CONFIRMAR E IR PARA O CHECKOUT
                 </Button>
               </div>
             </div>

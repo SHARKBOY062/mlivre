@@ -13,6 +13,13 @@ export default function ResultadoAvaliacao() {
   const [whatsapp, setWhatsapp] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const queryParams = new URLSearchParams(window.location.search);
+  const seguro = queryParams.get("seguro") || "nao";
+
+  const valorBase = 180.00;
+  const valorSeguro = 43.87;
+  const total = seguro === "sim" ? valorBase + valorSeguro : valorBase;
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!whatsapp) return;
@@ -56,33 +63,23 @@ export default function ResultadoAvaliacao() {
                 </p>
               </div>
 
-              <div className="bg-gray-50 p-6 rounded-md border border-gray-200 text-left mb-10">
-                <h3 className="institutional-label mb-4">📊 Taxa para Liberação de Contratação</h3>
+              <div className="bg-gray-50 p-6 rounded-md border border-gray-200 text-left mb-10" data-testid="resumo-resultado">
+                <h3 className="institutional-label mb-4">Resumo do Pagamento</h3>
                 <div className="space-y-3">
                   <div className="flex justify-between text-sm text-gray-600">
-                    <span>Taxa de Inscrição Administrativa:</span>
-                    <span>R$ 12,90</span>
+                    <span>Valor do produto:</span>
+                    <span>R$ {valorBase.toFixed(2).replace('.', ',')}</span>
                   </div>
-                  <div className="flex justify-between text-sm text-gray-600">
-                    <span>Taxa de Processamento de Dados:</span>
-                    <span>R$ 9,80</span>
-                  </div>
-                  <div className="flex justify-between text-sm text-gray-600">
-                    <span>Imposto Operacional de RH:</span>
-                    <span>R$ 8,50</span>
-                  </div>
-                  <div className="flex justify-between text-sm text-gray-600">
-                    <span>Taxa de Validação de Cadastro:</span>
-                    <span>R$ 7,90</span>
-                  </div>
-                  <div className="flex justify-between text-sm text-gray-600">
-                    <span>Tarifa de Liberação do Sistema:</span>
-                    <span>R$ 10,60</span>
-                  </div>
+                  {seguro === "sim" && (
+                    <div className="flex justify-between text-sm text-gray-600">
+                      <span>Seguro pedagógico:</span>
+                      <span>R$ {valorSeguro.toFixed(2).replace('.', ',')}</span>
+                    </div>
+                  )}
                   <div className="section-divider !my-2" />
-                  <div className="flex justify-between text-lg font-bold text-gray-900">
+                  <div className="flex justify-between text-xl font-extrabold text-gray-900">
                     <span>Total:</span>
-                    <span>R$ 49,70</span>
+                    <span data-testid="text-valor-final">R$ {total.toFixed(2).replace('.', ',')}</span>
                   </div>
                 </div>
               </div>
@@ -118,6 +115,7 @@ export default function ResultadoAvaliacao() {
                   type="submit"
                   disabled={!whatsapp || isSubmitting}
                   className="w-full h-16 ml-button"
+                  data-testid="button-confirmar-pagamento"
                 >
                   {isSubmitting ? "PROCESSANDO..." : "CONFIRMAR PAGAMENTO E ENVIAR DADOS"}
                 </Button>

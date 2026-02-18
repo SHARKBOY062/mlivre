@@ -1,0 +1,185 @@
+Atualize o fluxo da aplicação conforme as instruções abaixo.
+
+🎯 OBJETIVO
+
+1️⃣ Corrigir o valor final para usar:
+
+Base: R$ 180,00
+
+Seguro (opcional): + R$ 43,87
+
+2️⃣ Criar uma tela intermediária de:
+
+“Processando dados…”
+
+Antes de mostrar o resultado final.
+
+🧩 PARTE 1 — CORRIGIR O VALOR
+❌ REMOVER VALOR FIXO
+
+Localize no código onde aparece:
+
+49.70
+
+
+ou
+
+R$ 49,70
+
+
+E remova completamente.
+
+✅ DEFINIR VALORES CORRETOS NO JS
+
+No arquivo script.js:
+
+const valorBase = 180.00;
+const valorSeguro = 43.87;
+
+✅ FUNÇÃO DE CÁLCULO
+
+Criar ou corrigir:
+
+function calcularTotal() {
+  const comSeguro = document.getElementById("comSeguro").checked;
+
+  let total = valorBase;
+
+  if (comSeguro) {
+    total += valorSeguro;
+  }
+
+  return total;
+}
+
+✅ ATUALIZAR NA TELA FINAL
+
+Antes de mostrar o resultado:
+
+const total = calcularTotal();
+
+document.getElementById("valorFinal").innerText =
+  "R$ " + total.toFixed(2).replace(".", ",");
+
+📌 No HTML:
+
+Substituir o total por:
+
+<span id="valorFinal"></span>
+
+⏳ PARTE 2 — TELA DE CARREGAMENTO ANTES DO RESULTADO
+🎯 COMPORTAMENTO
+
+Quando o usuário clicar em:
+
+Confirmar / Prosseguir / Finalizar
+
+Deve:
+
+1️⃣ Mostrar tela “Processando dados”
+2️⃣ Aguardar
+3️⃣ Depois mostrar resultado
+
+🧱 CRIAR OVERLAY DE LOADING (HTML)
+
+Adicionar antes do </body>:
+
+<div id="loadingTela" class="loading-tela">
+  <div class="loading-box">
+    <div class="spinner"></div>
+    <h3>Processando seus dados...</h3>
+    <p>Validando informações no sistema</p>
+  </div>
+</div>
+
+🎨 CSS (style.css)
+
+Adicionar:
+
+.loading-tela {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.95);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.loading-box {
+  text-align: center;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid #ddd;
+  border-top: 6px solid #6a1b9a;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+⚙️ PARTE 3 — CONTROLE DO FLUXO (JS)
+NO BOTÃO FINAL
+
+No botão de confirmar:
+
+<button id="btnFinalizar">
+
+NO script.js:
+document.getElementById("btnFinalizar").addEventListener("click", function() {
+
+  // Mostrar loading
+  document.getElementById("loadingTela").style.display = "flex";
+
+  // Esconder conteúdo atual
+  document.getElementById("conteudoPrincipal").style.display = "none";
+
+  // Simular processamento
+  setTimeout(() => {
+
+    document.getElementById("loadingTela").style.display = "none";
+
+    mostrarResultadoFinal();
+
+  }, 12000); // 12 segundos
+});
+
+FUNÇÃO FINAL
+function mostrarResultadoFinal() {
+
+  const total = calcularTotal();
+
+  document.getElementById("valorFinal").innerText =
+    "R$ " + total.toFixed(2).replace(".", ",");
+
+  document.getElementById("telaResultado").style.display = "block";
+}
+
+📂 ORGANIZAÇÃO
+
+Garanta que existam:
+
+<div id="conteudoPrincipal"></div>
+<div id="telaResultado"></div>
+
+
+Para controlar as telas.
+
+✅ RESULTADO FINAL
+
+Depois disso:
+
+✔️ Nunca mais aparece R$ 49,70
+✔️ Valor certo sempre
+✔️ Tela profissional de análise
+✔️ Mais credibilidade
+✔️ Funil mais realista
