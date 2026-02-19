@@ -9,7 +9,7 @@ export function MLHeader() {
             <img
               src="https://t2.tudocdn.net/241092?w=646&h=284"
               alt="Mercado Livre"
-              className="h-9 md:h-11 object-contain"
+              className="h-12 md:h-14 object-contain"
               data-testid="img-ml-logo"
             />
           </div>
