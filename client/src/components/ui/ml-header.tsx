@@ -9,7 +9,7 @@ export function MLHeader() {
             <img
               src="https://http2.mlstatic.com/storage/pog-cm-admin/calm-assets/mercado-libre-thumbnail--1538x1510--b612412b.webp"
               alt="Mercado Livre"
-              className="h-8 md:h-10 object-contain"
+              className="h-10 md:h-12 object-contain"
               data-testid="img-ml-logo"
             />
           </div>
