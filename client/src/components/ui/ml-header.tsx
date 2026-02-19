@@ -7,7 +7,7 @@ export function MLHeader() {
         <Link href="/">
           <div className="flex items-center cursor-pointer">
             <img
-              src="https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/6.6.92/mercadolivre/logo__large_plus@2x.png"
+              src="https://t2.tudocdn.net/241092?w=646&h=284"
               alt="Mercado Livre"
               className="h-9 md:h-11 object-contain"
               data-testid="img-ml-logo"
