@@ -2,19 +2,19 @@ import { Link } from "wouter";
 
 export function MLHeader() {
   return (
-    <header className="bg-[#ffe600] shadow-sm flex items-center justify-center px-4 md:px-8 sticky top-0 z-50 border-b border-[#e5d100] py-3">
-      <div className="max-w-4xl mx-auto w-full flex flex-col items-center justify-center gap-1">
+    <header className="bg-[#ffe600] h-16 shadow-sm flex items-center px-4 md:px-8 sticky top-0 z-50 border-b border-[#e5d100]">
+      <div className="max-w-4xl mx-auto w-full flex items-center justify-between gap-2">
         <Link href="/">
-          <div className="flex items-center justify-center cursor-pointer">
+          <div className="flex items-center cursor-pointer">
             <img
-              src="https://http2.mlstatic.com/storage/pog-cm-admin/calm-assets/mercado-libre-thumbnail--1538x1510--b612412b.webp"
+              src="https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/6.6.92/mercadolivre/logo__large_plus@2x.png"
               alt="Mercado Livre"
-              className="h-14 md:h-16 object-contain"
+              className="h-9 md:h-11 object-contain"
               data-testid="img-ml-logo"
             />
           </div>
         </Link>
-        <span className="text-[#2d3277] font-bold text-[10px] md:text-xs uppercase tracking-wider text-center">
+        <span className="text-[#2d3277] font-bold text-xs md:text-sm uppercase tracking-wider hidden sm:block">
           Portal de Formalização Administrativa
         </span>
       </div>
